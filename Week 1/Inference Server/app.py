@@ -20,14 +20,13 @@ def align_document():
             mock_document = decode_image(file["mock_document"].read())
             unaligned_filled_doc = decode_image(file["unaligned_doc"].read())
 
-            aligned_document, estimated_homography = process_align(
+            aligned_document, h = process_align(
                 unaligned_filled_doc, mock_document)
 
             return jsonify(
                 {
                     "aligned_image": encode_image(
-                        Image.fromarray(np.uint8(aligned_document))),
-                    "estimated_homography": estimated_homography.tolist()
+                        Image.fromarray(np.uint8(aligned_document)))
                 }
             )
 

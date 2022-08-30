@@ -4,7 +4,7 @@ from io import BytesIO
 from base64 import decodebytes, encodebytes
 import numpy as np
 
-inference_url = 'http://host.docker.internal:7001/image/process'
+inference_url = 'http://host.docker.internal:5000/image/process'
 
 
 def encode_image(pil_img):
@@ -23,15 +23,15 @@ def decode_image(image_bytes):
     return np.array(image_bytes)
 
 
-def image_aligner_api(algined_mock_document, unaligned_filled_document):
+def classifier(face_image):
 
     response = requests.post(
         inference_url, verify=False,
-        files={"mock_document": encode_image(algined_mock_document),
-               "unaligned_doc": encode_image(unaligned_filled_document),
-               },
+        files={"face_image": encode_image(face_image)},
     ).json()
 
-    image_aligned = decode_image(response["aligned_image"])
+    label = response["label"]
+    inference_time = response["inference_time"]
+    pred_score = response["pred_score"]
 
-    return image_aligned
+    return label, inference_time, pred_score

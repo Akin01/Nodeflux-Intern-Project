@@ -42,15 +42,12 @@ def web_body():
                                                     "Upload a filled document image (unaligned)!")
 
     if mock_algined_document and filled_unaligned_document:
-        aligned_image, estimated_homography = image_aligner_api(
+        aligned_image = image_aligner_api(
             mock_algined_document, filled_unaligned_document)
 
         st.markdown("---")
         Widget.header("Result Aligned Document")
         Widget.show_image(aligned_image)
-        st.markdown("\n")
-        st.markdown("__Estimated Homography__ :")
-        st.code(f"{estimated_homography}")
 
 
 def document_aligned_app():
