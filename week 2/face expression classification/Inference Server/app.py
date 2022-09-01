@@ -11,7 +11,7 @@ def index():
 
 
 @app.route("/image/process", methods=["POST"])
-def expression_classifier():
+def expression_clasifier_handler():
     if request.method == "POST":
         if request.files:
             file = request.files

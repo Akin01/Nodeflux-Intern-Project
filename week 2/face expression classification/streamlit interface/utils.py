@@ -4,7 +4,7 @@ from io import BytesIO
 from base64 import decodebytes, encodebytes
 import numpy as np
 
-inference_url = 'http://host.docker.internal:5000/image/process'
+inference_url = 'http://host.docker.internal:7001/image/process'
 
 
 def encode_image(pil_img):

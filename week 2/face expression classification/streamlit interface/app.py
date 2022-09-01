@@ -1,6 +1,11 @@
 import streamlit as st
 from PIL import Image
 from utils import classifier
+from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
+from stream_service import live_inference
+
+RTC_CONFIGURATION = RTCConfiguration(
+    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]})
 
 
 class Widget:
@@ -34,7 +39,7 @@ def web_head():
     st.markdown("---")
 
 
-def web_body():
+def file_upload_page():
     face_image = Widget.upload_image(
         "Step 1 : Upload your face image!", "Your Face Expression")
 
@@ -45,7 +50,26 @@ def web_body():
         Widget.header("Result")
         st.markdown(f"Expression : ```{label}```")
         st.markdown(f"Inference Time : ```{round(inference_time, 2)} s```")
-        st.markdown(f"Confidence : ```{round(pred_score, 2) * 100}```")
+        st.markdown(f"Confidence Score : ```{round(pred_score * 100, 2)} %```")
+
+
+def stream_video_page():
+    st.header("Webcam Live Inference")
+    st.write("Click on start to use webcam and detect your face emotion")
+    webrtc_streamer(key="4h3huht4hj3", mode=WebRtcMode.SENDRECV,
+                    rtc_configuration=RTC_CONFIGURATION,
+                    video_processor_factory=live_inference.Faceemotion)
+
+
+def web_body():
+    sidebar_options = ["Upload File", "Webcam Stream"]
+    choice = st.sidebar.selectbox("Select Options", sidebar_options)
+
+    if choice == "Upload File":
+        file_upload_page()
+
+    elif choice == "Webcam Stream":
+        stream_video_page()
 
 
 def face_classification():
