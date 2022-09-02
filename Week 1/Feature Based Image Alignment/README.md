@@ -45,12 +45,12 @@ If all the process succesfully done, you will see :
 
 #### mock image
 
-![mock_image](https://raw.githubusercontent.com/Akin01/Nodeflux-Intern-Project/master/week%202/assets/face_expression_classification_demo.png)
+![mock_image](https://raw.githubusercontent.com/Akin01/Nodeflux-Intern-Project/master/Week%201/assets/demo-upload-1.png)
 
 #### unalignment image
 
-![unalign_image](https://raw.githubusercontent.com/Akin01/Nodeflux-Intern-Project/master/week%202/assets/face_expression_classification_demo.png)
+![unalign_image](https://raw.githubusercontent.com/Akin01/Nodeflux-Intern-Project/master/Week%201/assets/demo-upload-2.png)
 
 #### alignment result
 
-![alignment_image](https://raw.githubusercontent.com/Akin01/Nodeflux-Intern-Project/master/week%202/assets/face_expression_classification_demo.png)
+![alignment_image](https://raw.githubusercontent.com/Akin01/Nodeflux-Intern-Project/master/Week%201/assets/demo-result.png)

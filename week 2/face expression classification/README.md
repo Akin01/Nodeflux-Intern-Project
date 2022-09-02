@@ -42,4 +42,5 @@ You can build your own image by Dockerfile.
 - To see your application, open `http://127.0.0.1:8501` at your browser.
 
 If all the process succesfully done, you will see :
+<br><br>
 ![face_classification_demo](https://raw.githubusercontent.com/Akin01/Nodeflux-Intern-Project/master/week%202/assets/face_expression_classification_demo.png)
